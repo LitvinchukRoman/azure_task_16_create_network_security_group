@@ -89,4 +89,4 @@ New-AzStorageAccount `
 
 $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName)[0].Value
 $ctx = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $storageKey
-New-AzStorageContainer -Name "task-atrifacts" -Context $ctx -Permission Off
+New-AzStorageContainer -Name "task-artifacts" -Context $ctx -Permission Off

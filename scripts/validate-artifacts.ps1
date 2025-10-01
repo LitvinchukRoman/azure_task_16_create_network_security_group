@@ -107,7 +107,7 @@ foreach ($requiredSubnet in $requiredSubnets) {
 
 $webserversNSG = ( $TemplateObject.resources | Where-Object -Property type -EQ "Microsoft.Network/networkSecurityGroups" | Where-Object {$_.name.Contains("webservers")})
 if ($webserversNSG.properties.securityRules.Count -eq 3) {
-    Write-Output "`u{2705} Checked if webservers NSG has only 1 rule - OK."
+    Write-Output "`u{2705} Checked if webservers NSG has only 3 rule - OK."
 } else {
     Write-Output `u{1F914}
     throw "Unable to verify webservers NSG. Please make sure that it has only 1 rule and try again."
@@ -122,7 +122,7 @@ $webRule = $webserversNSG.properties.securityRules | Where-Object {$_.properties
 
 $managementNSG = ( $TemplateObject.resources | Where-Object -Property type -EQ "Microsoft.Network/networkSecurityGroups" | Where-Object {$_.name.Contains("management")})
 if ($managementNSG.properties.securityRules.Count -eq 2) {
-    Write-Output "`u{2705} Checked if management NSG has only 1 rule - OK."
+    Write-Output "`u{2705} Checked if management NSG has only 2 rule - OK."
 } else {
     Write-Output `u{1F914}
     throw "Unable to verify management NSG. Please make sure that it has only 1 rule and try again."
@@ -137,7 +137,7 @@ if ($sshRule) {
 
 $databaseNSG = ( $TemplateObject.resources | Where-Object -Property type -EQ "Microsoft.Network/networkSecurityGroups" | Where-Object {$_.name.Contains("database")})
 if ($databaseNSG.properties.securityRules.Count -eq 1) {
-    Write-Output "`u{2705} Checked if database NSG has no rules - OK."
+    Write-Output "`u{2705} Checked if database NSG has only one rule - OK."
 } else {
     Write-Output `u{1F914}
     throw "Unable to verify database NSG. Please make sure that it has no rules."
